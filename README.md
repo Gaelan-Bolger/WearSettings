@@ -1,4 +1,4 @@
-WaerSettings
+WearSettings
 =======
 
 A library for easy implementaion of WearableListView with header view
@@ -9,7 +9,6 @@ A library for easy implementaion of WearableListView with header view
 Sample
 --------
 
-Download [the latest JAR][2] or grab via Gradle:
 ```java
     @Override
     protected void onCreate(Bundle savedInstanceState) {
