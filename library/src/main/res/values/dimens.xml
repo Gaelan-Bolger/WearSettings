@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list_item_padding_sq">16dp</dimen>
+    <dimen name="list_item_padding_rd">42dp</dimen>
+    <dimen name="list_header_margin_top_sq">0dp</dimen>
+    <dimen name="list_header_margin_top_rd">12dp</dimen>
+    <dimen name="list_header_margin_top_no_icon_sq">16dp</dimen>
+    <dimen name="list_header_margin_top_no_icon_rd">32dp</dimen>
+
+    <dimen name="settings_text_margin_left">10dp</dimen>
+    <dimen name="settings_item_title_text_size">14sp</dimen>
+    <dimen name="settings_item_desc_text_size">16sp</dimen>
+
+    <dimen name="default_circle_border_width">1dp</dimen>
+    <dimen name="default_circle_radius">18dp</dimen>
+    <dimen name="default_circle_padding">8dp</dimen>
+</resources>
