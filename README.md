@@ -53,6 +53,9 @@ Sample
         items.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Item 1"));
         items.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Item 2"));
         items.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Item 3"));
+        items.add(new BoolPrefSettingsItem(R.drawable.ic_action_star, "Boolean preference", "my_pref_key"));
+        items.add(new PendingIntentSettingsItem(R.drawable.ic_action_star, "PendingIntent activity", PendingIntent.getActivity(this, 0, new Intent(this, NextActivity.class), 0)));
+        items.add(new PendingIntentSettingsItem(R.drawable.ic_action_star, "PendingIntent broadcast", PendingIntent.getBroadcast(this, 0, new Intent(ACTION_DO_SOMETHING), 0)));
         return items;
     }
 ```

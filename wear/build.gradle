@@ -9,8 +9,8 @@ android {
         applicationId "day.cloudy.apps.wear.settings.sample"
         minSdkVersion 20
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 102
+        versionName "1.0.2"
     }
     buildTypes {
         release {
@@ -22,5 +22,5 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':library')
+    compile project(':wear-settings')
 }

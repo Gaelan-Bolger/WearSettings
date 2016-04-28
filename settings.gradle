@@ -1,1 +1,1 @@
-include ':wear', ':library'
+include ':wear', ':wear-settings'

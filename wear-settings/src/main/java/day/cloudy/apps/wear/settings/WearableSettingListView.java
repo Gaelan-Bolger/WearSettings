@@ -171,6 +171,10 @@ public class WearableSettingListView extends BoxInsetLayout implements WearableL
             mOnScrollListener.onCentralPositionChanged(i);
     }
 
+    public SettingsAdapter getAdapter() {
+        return mSettingsAdapter;
+    }
+
     public void setTextColor(int color) {
         mSettingsAdapter.setTextColor(color);
     }
@@ -198,4 +202,21 @@ public class WearableSettingListView extends BoxInsetLayout implements WearableL
     public void setCirclePadding(int padding) {
         mSettingsAdapter.setCirclePadding(padding);
     }
+
+    public void setEnableGestureNavigation(boolean enable) {
+        mListView.setEnableGestureNavigation(enable);
+    }
+
+    public void setGreedyTouchMode(boolean greedy) {
+        mListView.setGreedyTouchMode(greedy);
+    }
+
+    public void scrollToPosition(int position) {
+        mListView.scrollToPosition(position);
+    }
+
+    public void smoothScrollToPosition(int position) {
+        mListView.smoothScrollToPosition(position);
+    }
+
 }

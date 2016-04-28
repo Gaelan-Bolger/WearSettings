@@ -4,8 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/WearSettings.iml" filepath="$PROJECT_DIR$/WearSettings.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/WearSettings-WearSettings.iml" filepath="$PROJECT_DIR$/library/WearSettings-WearSettings.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/wear/wear.iml" filepath="$PROJECT_DIR$/wear/wear.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wear-settings/library.iml" filepath="$PROJECT_DIR$/wear-settings/library.iml" />
     </modules>
   </component>
 </project>
