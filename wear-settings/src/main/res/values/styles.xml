@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="WearableSettingsListView">
-        <attr name="android:textColor"/>
-        <attr name="image_tint"/>
-        <attr name="circle_color"/>
-        <attr name="circle_border_color"/>
-        <attr name="circle_border_width"/>
-        <attr name="circle_radius"/>
-        <attr name="circle_padding"/>
+    <declare-styleable name="SettingsRecyclerView">
+        <attr name="ws_circle_border_color" />
+        <attr name="ws_circle_color" />
+        <attr name="ws_image_tint" />
+        <attr name="ws_title_text_color" />
+        <attr name="ws_summary_text_color" />
     </declare-styleable>
-
-    <style name="TextAppearance.Settings.Label" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textSize">14.0sp</item>
-    </style>
-
-    <style name="TextView.Settings.Label" parent="@style/TextView.Small.Light">
-        <item name="android:textAppearance">@style/TextAppearance.Settings.Label</item>
-    </style>
-
-    <style name="TextAppearance.Settings.Label.Large" parent="@style/TextAppearance.Settings.Label">
-        <item name="android:textSize">16.0sp</item>
-    </style>
-
 </resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="ws_circle_border_color" format="reference" />
+    <attr name="ws_circle_color" format="reference" />
+    <attr name="ws_image_tint" format="reference" />
+    <attr name="ws_title_text_color" format="reference" />
+    <attr name="ws_summary_text_color" format="reference" />
+</resources>

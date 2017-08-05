@@ -1,17 +1,21 @@
 WearSettings
 =======
 
-A library for easy implementaion of WearableListView with header view
+A library for easy implementaion of WearableRecyclerView with header view
 
-![](website/static/screens.png)
+![](website/static/Screenshot_1501942470.png)
+![](website/static/Screenshot_1501942479.png)
+![](website/static/Screenshot_1501942488.png)
+![](website/static/Screenshot_1501942494.png)
 
 
 Include
 --------
 
 ```groovy
-    compile 'day.cloudy.apps:wear-settings:1.0.2'
+    compile 'day.cloudy.apps.wear.settings:wear-settings:2.0.0'
 ```
+
 
 Example
 --------
@@ -20,39 +24,29 @@ Example
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WearableSettingListView settingListView = new WearableSettingListView(this);
-        
-        // Add a HeaderView to the list
-		View headerView = settingListView.inflateHeaderView(R.layout.list_header);
-        headerView.findViewById(android.R.id.icon).setVisibility(View.GONE);
-        ((TextView) headerView.findViewById(android.R.id.title)).setTextColor(Color.CYAN);
-        ((TextView) headerView.findViewById(android.R.id.title)).setText("Option title");
+        setContentView(R.layout.activity_main);
+        SettingsRecyclerView settingsRecyclerView = findViewById(R.id.settings_recycler_view);
 
-        // Set styles in XML or Java
-        settingListView.setTextColor(Color.CYAN);
-        settingListView.setImageTintColor(Color.CYAN);
-        settingListView.setCircleBackgroundColor(Color.MAGENTA);
-        settingListView.setCircleBorderColor(Color.CYAN);
-        settingListView.setCircleBorderWidth(getResources().getDimensionPixelSize(R.dimen.circle_border_width));
+        // Set up the header
+        settingsRecyclerView.setHeaderIcon(R.mipmap.ic_launcher);
+        settingsRecyclerView.setHeaderText(R.string.app_name);
 
-        // Click handler for SimpleSettingsItems and HeaderView
-        settingListView.setClickListener(new WearableSettingListView.ClickListener() {
+        // Add any combination of SettingsItems (Simple, Radio, PendingIntent, BoolPref), initial
+        // selection, and an optional click handler for SimpleSettingsItems and HeaderView
+        settingsRecyclerView.setSettingsItems(getSettingsItems(), 0, new SettingsRecyclerView.OnClickListener() {
             @Override
-            public void onHeaderClicked() {
+            public void onHeaderClick() {
+                toast("Header clicked");
             }
 
             @Override
-            public void onSimpleItemClicked(SimpleSettingsItem simpleSettingsItem) {
-                // Do something with selected item
-                Toast.makeText(MainActivity.this, simpleSettingsItem.title, Toast.LENGTH_SHORT).show();
-                finish();
+            public void onSimpleItemClick(int position, SimpleSettingsItem item) {
+                if (position == 2)
+                    startActivity(new Intent(MainActivity.this, RadioActivity.class));
+                else
+                    toast(item.title);
             }
         });
-		
-        // Add any combination of SettingsItems (Simple, PendingIntent, BoolPref)
-        settingListView.setSettingsItems(getSettingsItems());
-        
-        setContentView(settingListView);
     }
 
     @Override
@@ -74,25 +68,37 @@ Example
 
     @NonNull
     private List<SettingsItem> getSettingsItems() {
-        List<SettingsItem> items = new ArrayList<>();
-        // SimpleSettingsItem clicks handled in WearableSettingListView.ClickListener.onSimpleItemClicked()
-        items.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Item 1"));
-        items.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Item 2"));
-        items.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Item 3"));
-        // BoolPrefSettingsItem clicks trigger onSharedPreferenceChanged()
-        items.add(new BoolPrefSettingsItem(R.drawable.ic_action_star, "Boolean preference", "my_pref_key"));
-        // PendingItentSettingsItem starts an Activity or Service, or sends a Broadcast 
-        items.add(new PendingIntentSettingsItem(R.drawable.ic_action_star, "PendingIntent activity", PendingIntent.getActivity(this, 0, new Intent(this, NextActivity.class), 0)));
-        items.add(new PendingIntentSettingsItem(R.drawable.ic_action_star, "PendingIntent broadcast", PendingIntent.getBroadcast(this, 0, new Intent(ACTION_DO_SOMETHING), 0)));
-        return items;
+        List<SettingsItem> settingsItems = new ArrayList<>();
+        settingsItems.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Simple item 1"));
+        settingsItems.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Simple item 2"));
+        settingsItems.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Radio Activty"));
+        settingsItems.add(new PendingIntentSettingsItem(R.drawable.ic_action_star, "PI Activity",
+                PendingIntent.getActivity(this, 0, new Intent(this, PIActivity.class), 0)));
+        settingsItems.add(new PendingIntentSettingsItem(R.drawable.ic_action_star, "PI Broadcast",
+                PendingIntent.getBroadcast(this, 0, new Intent(PIReceiver.ACTION_MAKE_TOAST), 0)));
+        settingsItems.add(new BoolPrefSettingsItem(R.drawable.ic_action_star, "BP item 1", "key_1"));
+        settingsItems.add(new BoolPrefSettingsItem(R.drawable.ic_action_star, "BP item 2", "key_2"));
+        return settingsItems;
     }
 ```
 
-
+```xml
+    <day.cloudy.apps.wear.settings.view.SettingsRecyclerView
+        android:id="@+id/settings_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:ws_circle_border_color="@color/colorPrimary"
+        app:ws_circle_color="@android:color/white"
+        app:ws_image_tint="@color/colorPrimary"
+        app:ws_summary_text_color="?android:attr/textColorSecondary"
+        app:ws_title_text_color="?android:attr/textColorPrimary" />
+```
+		
+		
 License
 --------
 
-    Copyright 2016 Gaelan Bolger
+    Copyright 2017 Gaelan Bolger
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

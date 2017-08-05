@@ -2,15 +2,15 @@ apply plugin: 'com.android.application'
 
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
 
     defaultConfig {
         applicationId "day.cloudy.apps.wear.settings.sample"
-        minSdkVersion 20
-        targetSdkVersion 23
-        versionCode 102
-        versionName "1.0.2"
+        minSdkVersion 23
+        targetSdkVersion 26
+        versionCode 200
+        versionName "2.0.0"
     }
     buildTypes {
         release {
@@ -21,6 +21,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':wear-settings')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':wear-settings')
+    implementation 'com.android.support:appcompat-v7:26.0.0'
+    implementation 'com.android.support:wear:26.0.0'
+    implementation 'com.google.android.support:wearable:2.0.4'
+    compileOnly 'com.google.android.wearable:wearable:2.0.4'
 }

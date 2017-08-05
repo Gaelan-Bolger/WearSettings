@@ -7,18 +7,15 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.wearable.activity.WearableActivity;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import day.cloudy.apps.wear.settings.BoolPrefSettingsItem;
-import day.cloudy.apps.wear.settings.PendingIntentSettingsItem;
-import day.cloudy.apps.wear.settings.SettingsItem;
-import day.cloudy.apps.wear.settings.SimpleSettingsItem;
-import day.cloudy.apps.wear.settings.WearableSettingListView;
+import day.cloudy.apps.wear.settings.item.BoolPrefSettingsItem;
+import day.cloudy.apps.wear.settings.item.PendingIntentSettingsItem;
+import day.cloudy.apps.wear.settings.item.SettingsItem;
+import day.cloudy.apps.wear.settings.view.SettingsRecyclerView;
+import day.cloudy.apps.wear.settings.item.SimpleSettingsItem;
 
 public class MainActivity extends WearableActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -28,30 +25,28 @@ public class MainActivity extends WearableActivity implements SharedPreferences.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WearableSettingListView settingListView = (WearableSettingListView) findViewById(R.id.settings_list);
+        SettingsRecyclerView settingsRecyclerView = findViewById(R.id.settings_recycler_view);
 
-        // Click handler for SimpleSettingsItems and HeaderView
-        settingListView.setClickListener(new WearableSettingListView.ClickListener() {
+        // Set up the header
+        settingsRecyclerView.setHeaderIcon(R.mipmap.ic_launcher);
+        settingsRecyclerView.setHeaderText(R.string.app_name);
+
+        // Add any combination of SettingsItems (Simple, Radio, PendingIntent, BoolPref), initial
+        // selection, and an optional click handler for SimpleSettingsItems and HeaderView
+        settingsRecyclerView.setSettingsItems(getSettingsItems(), 0, new SettingsRecyclerView.OnClickListener() {
             @Override
-            public void onHeaderClicked() {
-                toast(getString(R.string.app_name));
+            public void onHeaderClick() {
+                toast("Header clicked");
             }
 
             @Override
-            public void onSimpleItemClicked(SimpleSettingsItem settingsItem) {
-                toast(settingsItem.title);
+            public void onSimpleItemClick(int position, SimpleSettingsItem item) {
+                if (position == 2)
+                    startActivity(new Intent(MainActivity.this, RadioActivity.class));
+                else
+                    toast(item.title);
             }
         });
-
-        // Add a HeaderView to the list
-        View headerView = settingListView.inflateHeaderView(R.layout.list_header);
-        ImageView headerIcon = (ImageView) headerView.findViewById(android.R.id.icon);
-        headerIcon.setImageResource(R.mipmap.ic_launcher);
-        TextView headerText = (TextView) headerView.findViewById(android.R.id.title);
-        headerText.setText(R.string.app_name);
-
-        // Add any combination of SettingsItems (Simple, PendingIntent, BoolPref)
-        settingListView.setSettingsItems(getSettingsItems());
     }
 
     @Override
@@ -76,10 +71,11 @@ public class MainActivity extends WearableActivity implements SharedPreferences.
         ArrayList<SettingsItem> settingsItems = new ArrayList<>();
         settingsItems.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Simple item 1"));
         settingsItems.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Simple item 2"));
+        settingsItems.add(new SimpleSettingsItem(R.drawable.ic_action_star, "Radio Activty"));
         settingsItems.add(new PendingIntentSettingsItem(R.drawable.ic_action_star, "PI Activity",
-                PendingIntent.getActivity(this, 0, new Intent(this, SecondActivity.class), 0)));
+                PendingIntent.getActivity(this, 0, new Intent(this, PIActivity.class), 0)));
         settingsItems.add(new PendingIntentSettingsItem(R.drawable.ic_action_star, "PI Broadcast",
-                PendingIntent.getBroadcast(this, 0, new Intent(IntentReceiver.ACTION_MAKE_TOAST), 0)));
+                PendingIntent.getBroadcast(this, 0, new Intent(PIReceiver.ACTION_MAKE_TOAST), 0)));
         settingsItems.add(new BoolPrefSettingsItem(R.drawable.ic_action_star, "BP item 1", "key_1"));
         settingsItems.add(new BoolPrefSettingsItem(R.drawable.ic_action_star, "BP item 2", "key_2"));
         return settingsItems;

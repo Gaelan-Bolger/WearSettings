@@ -1,4 +1,4 @@
-package day.cloudy.apps.wear.settings;
+package day.cloudy.apps.wear.settings.item;
 
 import android.support.annotation.DrawableRes;
 

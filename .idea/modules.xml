@@ -3,9 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/WearSettings.iml" filepath="$PROJECT_DIR$/WearSettings.iml" />
-      <module fileurl="file://$PROJECT_DIR$/library/WearSettings-WearSettings.iml" filepath="$PROJECT_DIR$/library/WearSettings-WearSettings.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\WearSettings\library\WearSettings-WearSettings.iml" filepath="D:\AndroidStudioProjects\WearSettings\library\WearSettings-WearSettings.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\WearSettings\wear-settings\library.iml" filepath="D:\AndroidStudioProjects\WearSettings\wear-settings\library.iml" />
       <module fileurl="file://$PROJECT_DIR$/wear/wear.iml" filepath="$PROJECT_DIR$/wear/wear.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wear-settings/library.iml" filepath="$PROJECT_DIR$/wear-settings/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wear-settings/wear-settings.iml" filepath="$PROJECT_DIR$/wear-settings/wear-settings.iml" />
     </modules>
   </component>
 </project>

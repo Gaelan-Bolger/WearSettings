@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-public class IntentReceiver extends BroadcastReceiver {
+public class PIReceiver extends BroadcastReceiver {
 
-    public static final String ACTION_MAKE_TOAST = "action.MAKE_TOAST";
+    public static final String ACTION_MAKE_TOAST = "day.cloudy.apps.wear.settings.sample.action.MAKE_TOAST";
 
     @Override
     public void onReceive(Context context, Intent intent) {

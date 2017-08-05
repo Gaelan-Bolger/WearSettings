@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <day.cloudy.apps.wear.settings.WearableSettingListView
-        android:id="@+id/settings_list"
+    <day.cloudy.apps.wear.settings.view.SettingsRecyclerView
+        android:id="@+id/settings_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="@android:color/white"
-        app:circle_border_color="@color/colorAccent"
-        app:circle_border_width="1dp"
-        app:circle_color="@color/colorPrimaryDark"
-        app:circle_padding="8dp"
-        app:circle_radius="18dp"
-        app:image_tint="@color/colorAccent"/>
+        app:ws_circle_border_color="@color/colorPrimary"
+        app:ws_circle_color="@android:color/white"
+        app:ws_image_tint="@color/colorPrimary"
+        app:ws_summary_text_color="?android:attr/textColorSecondary"
+        app:ws_title_text_color="?android:attr/textColorPrimary" />
 </LinearLayout>
