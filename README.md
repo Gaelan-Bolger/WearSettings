@@ -1,6 +1,6 @@
 WearSettings
 =======
-[ ![Download](https://api.bintray.com/packages/gaelan-bolger/maven/wear-settings-2/images/download.svg) ](https://bintray.com/gaelan-bolger/maven/wear-settings-2/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/gaelan-bolger/maven/day.cloudy.apps.wear-settings/images/download.svg) ](https://bintray.com/gaelan-bolger/maven/day.cloudy.apps.wear-settings/_latestVersion)
 
 A library for easy implementaion of WearableRecyclerView with header view
 
