@@ -13,7 +13,17 @@ Include
 --------
 
 ```groovy
-    compile 'day.cloudy.apps.wear.settings:wear-settings:2.0.0'
+    repositories {
+		...
+		maven {
+            url  "http://dl.bintray.com/gaelan-bolger/maven"
+        }
+    }
+	
+    dependencies {
+		...
+		compile 'day.cloudy.apps.wear.settings:wear-settings:2.0.2'
+	}
 ```
 
 
