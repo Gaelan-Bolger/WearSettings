@@ -47,6 +47,7 @@ public class SettingsRecyclerView extends FrameLayout implements ItemClickSuppor
     private static final String TAG = SettingsRecyclerView.class.getSimpleName();
 
     private final SettingsItemAdapter mAdapter;
+    private final WearableLinearLayoutManager mLayoutManager;
 
     private final HeaderView mHeaderView;
     private final WearableRecyclerView mRecyclerView;
@@ -63,6 +64,8 @@ public class SettingsRecyclerView extends FrameLayout implements ItemClickSuppor
     public SettingsRecyclerView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mAdapter = new SettingsItemAdapter(context);
+        mLayoutManager = new WearableLinearLayoutManager(context, new ScalingCurvingLayoutCallback(context));
+
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SettingsRecyclerView);
         setCircleBorderColor(ta.getColor(R.styleable.SettingsRecyclerView_ws_circle_border_color, Color.WHITE));
@@ -86,7 +89,7 @@ public class SettingsRecyclerView extends FrameLayout implements ItemClickSuppor
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setEdgeItemsCenteringEnabled(true);
-        mRecyclerView.setLayoutManager(new WearableLinearLayoutManager(context, new ScalingCurvingLayoutCallback(context)));
+        mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -187,6 +190,10 @@ public class SettingsRecyclerView extends FrameLayout implements ItemClickSuppor
                 }
             }
         }
+    }
+
+    public WearableLinearLayoutManager getLayoutManager() {
+        return mLayoutManager;
     }
 
     public void setOnClickListener(OnClickListener clickListener) {

@@ -27,7 +27,7 @@ allprojects {
 
 publishGlobalConfigurations {
     groupId = 'day.cloudy.apps.wear.settings'
-    versionName = '2.0.1'
+    versionName = '2.0.2'
 
     bintrayRepository = 'maven'
 
