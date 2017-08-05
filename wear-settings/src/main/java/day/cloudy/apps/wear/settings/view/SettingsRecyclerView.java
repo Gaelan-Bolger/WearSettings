@@ -189,6 +189,18 @@ public class SettingsRecyclerView extends FrameLayout implements ItemClickSuppor
         }
     }
 
+    public void setOnClickListener(OnClickListener clickListener) {
+        mOnClickListener = clickListener;
+    }
+
+    public void addOnScrollListener(RecyclerView.OnScrollListener scrollListener) {
+        mRecyclerView.addOnScrollListener(scrollListener);
+    }
+
+    public void removeOnScrollListener(RecyclerView.OnScrollListener scrollListener) {
+        mRecyclerView.removeOnScrollListener(scrollListener);
+    }
+
     public void smoothScrollToPosition(final int position) {
         post(new Runnable() {
             @Override
