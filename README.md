@@ -1,5 +1,6 @@
 WearSettings
 =======
+[ ![Download](https://api.bintray.com/packages/gaelan-bolger/maven/wear-settings-2/images/download.svg) ](https://bintray.com/gaelan-bolger/maven/wear-settings-2/_latestVersion)
 
 A library for easy implementaion of WearableRecyclerView with header view
 
@@ -13,16 +14,9 @@ Include
 --------
 
 ```groovy
-    repositories {
-		...
-		maven {
-            url  "http://dl.bintray.com/gaelan-bolger/maven"
-        }
-    }
-	
     dependencies {
 		...
-		compile 'day.cloudy.apps.wear.settings:wear-settings:2.0.2'
+		compile 'day.cloudy.apps:wear-settings:2.0.2'
 	}
 ```
 
